@@ -1,2 +1,5 @@
-package org.example;public class BinarySearchTree {
+package org.example;
+
+public class BinarySearchTree {
+    private BinarySearchTreeNode root;
 }
