@@ -39,14 +39,14 @@ class BinarySearchTreeTest {
 
     @Test
     void containsWorksOnComplexTrees() throws Exception {
-        setupComplexBinarySearchTree();
+        setupTree();
         assertTrue(binarySearchTree.constains(2));
     }
 
     @Test
     void testIfRemoveWorksWhenExists() throws Exception {
 
-        setupComplexBinarySearchTree();
+        setupTree();
 
         assertEquals(size, binarySearchTree.size());
         boolean doesExist = binarySearchTree.removeElement(size);
@@ -61,7 +61,7 @@ class BinarySearchTreeTest {
     @Test
     void testIfRemoveWorksWhenRemovingTheRoot() throws Exception {
 
-        setupComplexBinarySearchTree();
+        setupTree();
         assertEquals(size, binarySearchTree.size());
 
         Integer root = (Integer) binarySearchTree.getRoot().getElement();
@@ -80,7 +80,7 @@ class BinarySearchTreeTest {
     @Test
     void testIfRemoveWorksWhenDoesNotExists() throws Exception {
 
-        setupComplexBinarySearchTree();
+        setupTree();
 
         assertEquals(15, binarySearchTree.size());
         boolean doesExist = binarySearchTree.removeElement(size+1);
@@ -96,20 +96,20 @@ class BinarySearchTreeTest {
 
     @Test
     void testFindMin() throws Exception {
-        setupComplexBinarySearchTree();
+        setupTree();
         assertEquals(1, binarySearchTree.findMin());
     }
 
     @Test
     void testFindMax() throws Exception {
-        setupComplexBinarySearchTree();
+        setupTree();
         // Since, size is the max item
         assertEquals(size, binarySearchTree.findMax());
     }
 
     @Test
     void testRebalance() throws Exception {
-        setupComplexBinarySearchTree();
+        setupTree();
         ArrayList<Integer> correctPreOrderAtBalance  = new ArrayList<>(Arrays.asList(8, 4, 2, 1, 3, 6, 5, 7, 12, 10, 9, 11, 14, 13, 15));
 
         binarySearchTree.rebalance();
@@ -120,7 +120,7 @@ class BinarySearchTreeTest {
 
 
 
-    private void setupComplexBinarySearchTree() throws Exception {
+    private void setupTree() throws Exception {
         for (int i = 1; i <= size; i++) {
             binarySearchTree.insert(i);
         }
