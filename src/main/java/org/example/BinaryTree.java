@@ -7,9 +7,16 @@ public class BinaryTree<T extends Comparable<T>> {
     private BinaryTreeNode<T> root;
     private int size;
 
+    public BinaryTree()
+    {
+        root=null;
+        size=0;
+    }
+
     public BinaryTree(BinaryTreeNode<T> root)
     {
         this.root=root;
+        size=1;
     }
 
     public BinaryTreeNode getRoot()
@@ -18,6 +25,7 @@ public class BinaryTree<T extends Comparable<T>> {
     }
 
     public void setRoot(BinaryTreeNode root){
+
         this.root=root;
     }
 
@@ -25,7 +33,9 @@ public class BinaryTree<T extends Comparable<T>> {
     {
         if(root==null) return true;
 
-        return size==0?true:false;
+        if (root.getElement() == null && root.getRightChild() == null && root.getLeftChild() == null) return true;
+
+        return false;
     }
 
     public int size()

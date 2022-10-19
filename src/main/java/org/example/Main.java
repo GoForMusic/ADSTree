@@ -10,7 +10,7 @@ public class Main {
         BinaryTreeNode node3= new BinaryTreeNode(11);
         BinaryTreeNode node4 = new BinaryTreeNode(21);
         BinaryTreeNode node5 = new BinaryTreeNode(27);
-        BinaryTreeNode node6 = new BinaryTreeNode(01);
+        BinaryTreeNode node6 = new BinaryTreeNode(10);
         BinaryTreeNode node7= new BinaryTreeNode(31);
         BinaryTreeNode node8= new BinaryTreeNode(40);
         BinaryTreeNode node9= new BinaryTreeNode(8);
