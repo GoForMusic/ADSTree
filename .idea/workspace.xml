@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de910d6a-df67-4142-94f6-db9d46252643" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/BinarySearchTreeNodeTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/BinarySearchTreeTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/BinaryTreeNodeTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/BinaryTreeTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/BinarySearchTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/BinarySearchTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/BinarySearchTreeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/BinarySearchTreeNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/BinaryTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/BinaryTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/BinaryTreeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/BinaryTreeNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/BinarySearchTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/BinarySearchTreeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,18 +59,16 @@
       <recent name="org.example" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BinarySearchTreeTest">
-    <configuration name="BinarySearchTreeNodeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.BinarySearchTreeNodeTest and 3 more">
+    <configuration name="BinarySearchTreeNodeTest and 3 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ADSTree" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.example" />
-      <option name="MAIN_CLASS_NAME" value="org.example.BinarySearchTreeNodeTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="pattern" />
+      <patterns>
+        <pattern testClass="org.example.BinarySearchTreeNodeTest" />
+        <pattern testClass="org.example.BinarySearchTreeTest" />
+        <pattern testClass="org.example.BinaryTreeNodeTest" />
+        <pattern testClass="org.example.BinaryTreeTest" />
+      </patterns>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -95,7 +88,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BinarySearchTreeTest.isRootNull" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BinarySearchTreeTest.testIfRemoveWorksWhenExists" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ADSTree" />
       <extension name="coverage">
         <pattern>
@@ -105,13 +98,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="org.example" />
       <option name="MAIN_CLASS_NAME" value="org.example.BinarySearchTreeTest" />
-      <option name="METHOD_NAME" value="isRootNull" />
+      <option name="METHOD_NAME" value="testIfRemoveWorksWhenExists" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BinaryTreeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BinarySearchTreeTest.testIfRemoveWorksWhenRemovingTheRoot" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ADSTree" />
       <extension name="coverage">
         <pattern>
@@ -120,13 +113,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.example" />
-      <option name="MAIN_CLASS_NAME" value="org.example.BinaryTreeTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="org.example.BinarySearchTreeTest" />
+      <option name="METHOD_NAME" value="testIfRemoveWorksWhenRemovingTheRoot" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BinaryTreeTest.testInOrder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BinarySearchTreeTest.testRebalance" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ADSTree" />
       <extension name="coverage">
         <pattern>
@@ -135,8 +129,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.example" />
-      <option name="MAIN_CLASS_NAME" value="org.example.BinaryTreeTest" />
-      <option name="METHOD_NAME" value="testInOrder" />
+      <option name="MAIN_CLASS_NAME" value="org.example.BinarySearchTreeTest" />
+      <option name="METHOD_NAME" value="testRebalance" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -144,11 +138,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BinarySearchTreeNodeTest and 3 more" />
         <item itemvalue="JUnit.BinarySearchTreeTest" />
-        <item itemvalue="JUnit.BinarySearchTreeTest.isRootNull" />
-        <item itemvalue="JUnit.BinarySearchTreeNodeTest" />
-        <item itemvalue="JUnit.BinaryTreeTest" />
-        <item itemvalue="JUnit.BinaryTreeTest.testInOrder" />
+        <item itemvalue="JUnit.BinarySearchTreeTest.testRebalance" />
+        <item itemvalue="JUnit.BinarySearchTreeTest.testIfRemoveWorksWhenRemovingTheRoot" />
+        <item itemvalue="JUnit.BinarySearchTreeTest.testIfRemoveWorksWhenExists" />
       </list>
     </recent_temporary>
   </component>
@@ -165,7 +159,7 @@
       <workItem from="1665428080821" duration="1005000" />
       <workItem from="1665862529846" duration="123000" />
       <workItem from="1665862670516" duration="229000" />
-      <workItem from="1666196043728" duration="3790000" />
+      <workItem from="1666196043728" duration="7421000" />
     </task>
     <task id="LOCAL-00001" summary="/....">
       <created>1665427390926</created>
@@ -174,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665427390926</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="/....">
+      <created>1666199936465</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1666199936465</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

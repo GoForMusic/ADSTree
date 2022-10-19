@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,7 +16,7 @@ class BinarySearchTreeTest {
     @BeforeEach
     void setup() {
         binarySearchTree = new BinarySearchTree<>();
-        size = 15;
+        size=15;
     }
 
     @AfterEach
@@ -31,36 +31,35 @@ class BinarySearchTreeTest {
     }
 
     @Test
-    void insertIntoEmptyRoot() {
+    void insertIntoEmptyRoot() throws Exception {
         binarySearchTree.insert(5);
         assertEquals(binarySearchTree.getRoot().getElement(), 5);
 
     }
 
     @Test
-    void containsWorksOnComplexTrees() {
+    void containsWorksOnComplexTrees() throws Exception {
         setupComplexBinarySearchTree();
-        assertTrue(binarySearchTree.contains(2));
+        assertTrue(binarySearchTree.constains(2));
     }
 
     @Test
-    void testIfRemoveWorksWhenExists() {
+    void testIfRemoveWorksWhenExists() throws Exception {
 
         setupComplexBinarySearchTree();
 
-        assertEquals(binarySearchTree, binarySearchTree.size());
+        assertEquals(size, binarySearchTree.size());
         boolean doesExist = binarySearchTree.removeElement(size);
 
         assertTrue(doesExist);
-
         // Need to not contain the last element
-        assertFalse(binarySearchTree.contains(size));
+        assertFalse(binarySearchTree.constains(size));
         // Need one less element
         assertEquals(size-1, binarySearchTree.size());
     }
 
     @Test
-    void testIfRemoveWorksWhenRemovingTheRoot() {
+    void testIfRemoveWorksWhenRemovingTheRoot() throws Exception {
 
         setupComplexBinarySearchTree();
         assertEquals(size, binarySearchTree.size());
@@ -71,15 +70,15 @@ class BinarySearchTreeTest {
         assertTrue(doesExist);
 
         // Need to not contain the last element
-        assertFalse(binarySearchTree.contains(root));
+        assertFalse(binarySearchTree.constains(root));
         // Need one less element
-        assertEquals(size-1, binarySearchTree.size());
+        assertEquals(14, binarySearchTree.size());
 
 
 
     }
     @Test
-    void testIfRemoveWorksWhenDoesNotExists() {
+    void testIfRemoveWorksWhenDoesNotExists() throws Exception {
 
         setupComplexBinarySearchTree();
 
@@ -96,33 +95,32 @@ class BinarySearchTreeTest {
     }
 
     @Test
-    void testFindMin(){
+    void testFindMin() throws Exception {
         setupComplexBinarySearchTree();
         assertEquals(1, binarySearchTree.findMin());
     }
 
     @Test
-    void testFindMax(){
+    void testFindMax() throws Exception {
         setupComplexBinarySearchTree();
         // Since, size is the max item
         assertEquals(size, binarySearchTree.findMax());
     }
 
     @Test
-    void testRebalance(){
+    void testRebalance() throws Exception {
         setupComplexBinarySearchTree();
-        Integer[] correctPreOrderAtBalance  ={8, 4, 2, 1, 3, 6, 5, 7, 12, 10, 9, 11, 14, 13, 15};
-        ArrayList<Integer> expectedPreOrder = new ArrayList<>(List.of(correctPreOrderAtBalance));
+        ArrayList<Integer> correctPreOrderAtBalance  = new ArrayList<>(Arrays.asList(8, 4, 2, 1, 3, 6, 5, 7, 12, 10, 9, 11, 14, 13, 15));
 
-        binarySearchTree.reBalance();
+        binarySearchTree.rebalance();
 
-        assertEquals(expectedPreOrder, binarySearchTree.preOrder());
+        assertEquals(correctPreOrderAtBalance, binarySearchTree.preOrder());
 
     }
 
 
 
-    private void setupComplexBinarySearchTree() {
+    private void setupComplexBinarySearchTree() throws Exception {
         for (int i = 1; i <= size; i++) {
             binarySearchTree.insert(i);
         }

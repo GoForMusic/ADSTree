@@ -12,4 +12,12 @@ public class BinarySearchTreeNode<T extends Comparable<T>> extends BinaryTreeNod
     public BinarySearchTreeNode(T element){
         this.element=element;
     }
+
+    public void setElement(T element) {
+        this.element = element;
+    }
+
+    public T getElement() {
+        return element;
+    }
 }

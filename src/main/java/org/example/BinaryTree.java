@@ -3,14 +3,13 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BinaryTree<T extends Comparable<T>> {
+public class BinaryTree<T> {
     private BinaryTreeNode<T> root;
     private int size;
 
     public BinaryTree()
     {
         root=null;
-        size=0;
     }
 
     public BinaryTree(BinaryTreeNode<T> root)

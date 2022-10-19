@@ -1,24 +1,21 @@
 package org.example;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class BinarySearchTree<T extends Comparable<T>> extends BinaryTree<T> {
 
-    private boolean isFound=false;
+
 
     public BinarySearchTree(){
         super();
     }
 
-    public boolean insert(T element) {
-
-        try {
+    public boolean insert(T element) throws Exception {
+        if(contains(element)) return false;
+        else {
             setRoot(insert(element, (BinarySearchTreeNode<T>) getRoot()));
             return true;
-        } catch (Exception e) {
-            return false;
         }
-
     }
 
     private BinarySearchTreeNode<T> insert(T element, BinarySearchTreeNode<T> node) throws Exception {
@@ -33,18 +30,17 @@ public class BinarySearchTree<T extends Comparable<T>> extends BinaryTree<T> {
         }
 
         return node;
+
+    }
+    public boolean removeElement(T element){
+        if(!contains(element)) return false;
+        {
+            setRoot(removeElement(element, (BinarySearchTreeNode<T>) getRoot()));
+            return true;
+        }
     }
 
-    public boolean removeElement(T element) {
-
-
-        setRoot(removeElement(element, (BinarySearchTreeNode<T>) getRoot()));
-        return isFound;
-    }
-
-    private BinarySearchTreeNode<T> removeElement(T element, BinarySearchTreeNode<T> node) {
-        isFound = false;
-        // Base case : if the tree is empty
+    private BinarySearchTreeNode<T> removeElement(T element, BinarySearchTreeNode<T> node){
         if (node == null) return null;
 
         // Recur down the tree
@@ -57,100 +53,49 @@ public class BinarySearchTree<T extends Comparable<T>> extends BinaryTree<T> {
             return node;
         }
 
-        // Here, the element is finally found.
-        isFound = true;
-
-        // Now there are three cases..
-        // The found root might have zero, one or two childs..
-
-
-        // If one child is empty, the corresponding is going to be the new root
 
         if (node.getLeftChild() == null) {
             return (BinarySearchTreeNode<T>) node.getRightChild();
         } else if (node.getRightChild() == null) {
             return (BinarySearchTreeNode<T>) node.getLeftChild();
         }
-
-
-        // If both children exist, this is super complex...
-        else {
-            BinarySearchTreeNode<T> succParent = node;
-
-            // Mission : Finding the successor for the node...
-            BinarySearchTreeNode<T> succ = (BinarySearchTreeNode<T>) node.getRightChild();
-
-            while (succ.getLeftChild() != null) {
-                succParent = succ;
-                succ = (BinarySearchTreeNode<T>) succ.getLeftChild();
-            }
-
-            // Here, we delete the successor .
-            // Since, the succsesor is always the left child of the parent (the smaller one), we can
-            // make the successors right-right child to the left of its parent.
-            if (succParent != node) {
-                succParent.addLeftChild(succ.getRightChild());
-            } else {
-                succParent.addRightChild(succ.getRightChild());
-            }
-
-
-            // Well, if there is no sucessor, then assign suceessor -> right  to tempParent->right..
-            node.setElement(succ.getElement());
-            return node;
-        }
-
+        return node;
     }
 
-    public T findMin() {
+    public T findMin(){
+        BinarySearchTreeNode<T> root = (BinarySearchTreeNode<T>) getRoot();
 
-        BinarySearchTreeNode<T> startNode = (BinarySearchTreeNode<T>) getRoot();
-
-        T minVal = (T) startNode.getElement();
-        while (startNode.getLeftChild() != null) {
-            minVal = (T) startNode.getLeftChild().getElement();
-            startNode = (BinarySearchTreeNode<T>) startNode.getLeftChild();
+        T min = root.getElement();
+        while (root.getLeftChild() != null) {
+            min = (T) root.getLeftChild().getElement();
+            root = (BinarySearchTreeNode<T>) root.getLeftChild();
 
         }
-        return minVal;
+        return min;
     }
 
-    public T findMax() {
-        BinarySearchTreeNode<T> startNode = (BinarySearchTreeNode<T>) getRoot();
+    public T findMax(){
+        BinarySearchTreeNode<T> root = (BinarySearchTreeNode<T>) getRoot();
 
-        T maxVal = (T) startNode.getElement();
-        while (startNode.getRightChild() != null) {
-            maxVal = (T) startNode.getRightChild().getElement();
-            startNode = (BinarySearchTreeNode<T>) startNode.getRightChild();
+        T max = (T) root.getElement();
+        while (root.getRightChild() != null) {
+            max = (T) root.getRightChild().getElement();
+            root = (BinarySearchTreeNode<T>) root.getRightChild();
 
         }
-        return maxVal;
+        return max;
     }
 
-    public boolean contains(T element) {
-        return contains(element, (BinarySearchTreeNode) getRoot());
+    public boolean constains(T element){
+        return contains(element);
     }
 
-    private boolean contains(T element, BinarySearchTreeNode node) {
-
-        if (node == null || node.getElement() == null) return false;
-       // if (node.getElement().compareTo(element) > 0) {
-        //    return contains(element, (BinarySearchTreeNode) node.getLeftChild());
-        //} else if (node.getElement().compareTo(element) < 0) {
-        //    return contains(element, (BinarySearchTreeNode) node.getRightChild());
-        //} else {
-        //    // If compare to method returns 0, its equal
-         //   return true;
-       // }
-        return false;
+    void rebalance(){
+        setRoot(rebalance((BinarySearchTreeNode<T>) getRoot()));
     }
 
-    public void reBalance() {
-        setRoot( reBalance((BinarySearchTreeNode<T>) getRoot()));
-    }
-
-    private BinarySearchTreeNode<T> reBalance(BinarySearchTreeNode<T> node){
-        Vector<BinarySearchTreeNode<T>> nodes = new Vector<>();
+    private BinarySearchTreeNode<T> rebalance(BinarySearchTreeNode<T> node){
+        ArrayList<BinarySearchTreeNode<T>> nodes = new ArrayList<>();
         storeBinarySearchTreeNodes(node, nodes);
 
 
@@ -158,7 +103,8 @@ public class BinarySearchTree<T extends Comparable<T>> extends BinaryTree<T> {
         return buildTreeUtil(nodes, 0, n-1);
     }
 
-    private void storeBinarySearchTreeNodes(BinarySearchTreeNode<T> node, Vector<BinarySearchTreeNode<T>> nodes) {
+
+    private void storeBinarySearchTreeNodes(BinarySearchTreeNode<T> node, ArrayList<BinarySearchTreeNode<T>> nodes) {
         // Base case
         if (node ==null) return;
 
@@ -168,7 +114,7 @@ public class BinarySearchTree<T extends Comparable<T>> extends BinaryTree<T> {
 
     }
 
-    private BinarySearchTreeNode<T> buildTreeUtil(Vector<BinarySearchTreeNode<T>> nodes, int start, int end) {
+    private BinarySearchTreeNode<T> buildTreeUtil(ArrayList<BinarySearchTreeNode<T>> nodes, int start, int end) {
         // base case
         if (start > end) return null;
 
@@ -182,7 +128,5 @@ public class BinarySearchTree<T extends Comparable<T>> extends BinaryTree<T> {
 
         return node;
 
-
     }
-
 }

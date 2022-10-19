@@ -4,19 +4,19 @@ public class Main {
     public static void main(String[] args) {
 
 
-        BinaryTreeNode node = new BinaryTreeNode(10);
-        BinaryTreeNode node1 = new BinaryTreeNode(15);
-        BinaryTreeNode node2= new BinaryTreeNode(5);
+        BinaryTreeNode node = new BinaryTreeNode(1);
+        BinaryTreeNode node1 = new BinaryTreeNode(2);
+        BinaryTreeNode node2= new BinaryTreeNode(10);
         BinaryTreeNode node3= new BinaryTreeNode(11);
-        BinaryTreeNode node4 = new BinaryTreeNode(21);
-        BinaryTreeNode node5 = new BinaryTreeNode(27);
-        BinaryTreeNode node6 = new BinaryTreeNode(10);
-        BinaryTreeNode node7= new BinaryTreeNode(31);
-        BinaryTreeNode node8= new BinaryTreeNode(40);
-        BinaryTreeNode node9= new BinaryTreeNode(8);
-        BinaryTreeNode node10= new BinaryTreeNode(7);
+        BinaryTreeNode node4 = new BinaryTreeNode(99);
+        BinaryTreeNode node5 = new BinaryTreeNode(65464);
+        BinaryTreeNode node6 = new BinaryTreeNode(5555);
+        BinaryTreeNode node7= new BinaryTreeNode(3166);
+        BinaryTreeNode node8= new BinaryTreeNode(450);
+        BinaryTreeNode node9= new BinaryTreeNode(85);
+        BinaryTreeNode node10= new BinaryTreeNode(71);
         BinaryTreeNode node11= new BinaryTreeNode(152);
-        BinaryTreeNode node12= new BinaryTreeNode(310);
+        BinaryTreeNode node12= new BinaryTreeNode(10);
 
         node.addLeftChild(node1);
         node.addRightChild(node2);
