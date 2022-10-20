@@ -1,7 +1,5 @@
 package org.example;
 
-import java.util.ArrayList;
-
 public class BinarySearchTree<T extends Comparable<T>> extends BinaryTree<T> {
 
 
@@ -95,38 +93,50 @@ public class BinarySearchTree<T extends Comparable<T>> extends BinaryTree<T> {
     }
 
     private BinarySearchTreeNode<T> rebalance(BinarySearchTreeNode<T> node){
-        ArrayList<BinarySearchTreeNode<T>> nodes = new ArrayList<>();
-        storeBinarySearchTreeNodes(node, nodes);
-
-
-        int n = nodes.size();
-        return buildTreeUtil(nodes, 0, n-1);
+        BinarySearchTreeNode<T> temp = new BinarySearchTreeNode<>();
+        temp.addRightChild(node);
+        int size=treeToVine(temp);
+        int height=(int)(Math.log(size+1)/Math.log(2));
+        int noOfNodes=(int)Math.pow(2,height)-1;
+        for(noOfNodes=noOfNodes/2;noOfNodes>0;noOfNodes/=2){
+            compressVine(temp,noOfNodes);
+        }
+        return (BinarySearchTreeNode<T>) temp.getRightChild();
     }
 
+    private int treeToVine(BinarySearchTreeNode<T> current)
+    {
+        int i=0;
+        BinarySearchTreeNode<T> temp= (BinarySearchTreeNode<T>) current.getRightChild();
 
-    private void storeBinarySearchTreeNodes(BinarySearchTreeNode<T> node, ArrayList<BinarySearchTreeNode<T>> nodes) {
-        // Base case
-        if (node ==null) return;
-
-        storeBinarySearchTreeNodes((BinarySearchTreeNode<T>) node.getLeftChild(), nodes);
-        nodes.add(node);
-        storeBinarySearchTreeNodes((BinarySearchTreeNode<T>) node.getRightChild(), nodes);
-
+        while(temp!=null){
+            if(temp.getLeftChild()!=null){
+                BinarySearchTreeNode<T> temp2=temp;
+                temp= (BinarySearchTreeNode<T>) temp.getLeftChild();
+                temp2.addLeftChild(temp.getRightChild());
+                temp.addRightChild(temp2);
+                current.addRightChild(temp);
+            }else{
+                i++;
+                current=temp;
+                temp= (BinarySearchTreeNode<T>) temp.getRightChild();
+            }
+        }
+        return i;
     }
 
-    private BinarySearchTreeNode<T> buildTreeUtil(ArrayList<BinarySearchTreeNode<T>> nodes, int start, int end) {
-        // base case
-        if (start > end) return null;
+    private void compressVine(BinarySearchTreeNode<T> current, int m){
+        BinarySearchTreeNode<T> temp = (BinarySearchTreeNode<T>) current.getRightChild();
 
-        // Make the middle element root
-        int mid = (start + end) /2;
-        BinarySearchTreeNode<T> node = nodes.get(mid);
-
-        // Construct left and right subtrees using inorder traversal
-        node.addLeftChild(buildTreeUtil(nodes, start, mid-1));
-        node.addRightChild(buildTreeUtil(nodes, mid+1, end));
-
-        return node;
-
+        for(int i=0;i<m;i++){
+            BinarySearchTreeNode<T> temp2=temp;
+            temp= (BinarySearchTreeNode<T>) temp.getRightChild();
+            current.addRightChild(temp);
+            temp2.addRightChild(temp.getLeftChild());
+            temp.addLeftChild(temp2);
+            current=temp;
+            temp= (BinarySearchTreeNode<T>) temp.getRightChild();
+        }
     }
+
 }
